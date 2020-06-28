@@ -1,0 +1,2 @@
+# BOBA
+Cardano Staking Testnet 

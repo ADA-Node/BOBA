@@ -1,1 +1,6 @@
-test
+{
+  "name": "BOBA Tea",
+  "description": "Delicious Staking with BOBA",
+  "ticker": "BOBA",
+  "homepage": "https://ada-node.github.io/BOBA"
+}

@@ -1,4 +1,4 @@
-## **BOBA** Stakepool!
+## **BOBA** Stakepool RPi Config Notes!
 
 Welcome to the BOBA Stakepool.  The BOBA pool is a stakepool on the Cardano network. This repo is intended to help others configure and setup their own stakepools.  My infrastructure is a combination of bare metal server and low cost/low power Raspberry Pi nodes.  The end goal is to migrate the entire BOBA Stakepool to low power processing.  To help others build their own low cost/low power setups, I've documented this guide.
 

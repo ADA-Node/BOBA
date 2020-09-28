@@ -24,11 +24,14 @@ sudo apt update -y
 sudo apt upgrade -y
 ```
 
-## 3. Install dependencies:
+## 3. Install dependencies and setup folders:
 
 ```
 sudo apt install libsodium-dev build-essential pkg-config libffi-dev libgmp-dev libssl-dev libtinfo-dev libsystemd-dev zlib1g-dev make g++ tmux git jq wget libncursesw5 llvm haskell-platform -y
-
+mkdir -p $HOME/.local/bin
+mkdir $HOME/git
+echo PATH="$HOME/.local/bin:$PATH" >> $HOME/.bashrc
+echo export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH" >> $HOME/.bashrc
 ```
 
 ## 4. Install ghc-8.6.5:
@@ -48,12 +51,14 @@ rm -r ghc-8.6.5
 ```
 wget http://hackage.haskell.org/package/cabal-install-3.2.0.0/cabal-install-3.2.0.0.tar.gz
 tar -xf cabal-install-3.2.0.0.tar.gz
+rm cabal-install-3.2.0.0.tar.gz
 cd cabal-install-3.2.0.0
 cabal update
 cabal install --installdir=$HOME/.local/bin
+rm -r cabal-install-3.2.0.0
 ```
 
-## 6. Install cardano-node and cardano-cli from source
+## 6. Install cardano-node and cardano-cli from source (make sure to update cabal twice)
 
 ```
 cd $HOME/git
@@ -61,6 +66,15 @@ git clone https://github.com/input-output-hk/cardano-node.git
 cd cardano-node
 git fetch --all
 git checkout tags/1.20.0
+cabal clean
+cabal udpate
+cabal update
+sed -i $HOME/.cabal/config -e "s/overwrite-policy:/overwrite-policy: always/g"
+cabal build all
+sudo cp $(find $HOME/git/cardano-node/dist-newstyle/build -type f -name "cardano-cli") ~/.local/bin/cardano-cli
+sudo cp $(find $HOME/git/cardano-node/dist-newstyle/build -type f -name "cardano-node") ~/.local/bin/cardano-node
+cardano-node --version
+cardano-cli --version
 ```
 
 ## 7. More to come...

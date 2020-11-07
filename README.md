@@ -65,7 +65,7 @@ cd $HOME/git
 git clone https://github.com/input-output-hk/cardano-node.git
 cd cardano-node
 git fetch --all
-git checkout tags/1.20.0
+git checkout tags/1.21.1
 cabal clean
 cabal udpate
 cabal update

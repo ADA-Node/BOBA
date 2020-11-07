@@ -37,6 +37,7 @@ echo export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH" >> $HOME/.bashrc
 ## 4. Install ghc-8.6.5:
 
 ```
+cd ~
 wget https://downloads.haskell.org/~ghc/8.6.5/ghc-8.6.5-aarch64-ubuntu18.04-linux.tar.xz
 tar -xf ghc-8.6.5-aarch64-ubuntu18.04-linux.tar.xz
 rm ghc-8.6.5-aarch64-ubuntu18.04-linux.tar.xz
@@ -49,6 +50,7 @@ rm -r ghc-8.6.5
 ## 5. Build Cabal 3.2.0 (beware this takes a long time)
 
 ```
+cd ~
 wget http://hackage.haskell.org/package/cabal-install-3.2.0.0/cabal-install-3.2.0.0.tar.gz
 tar -xf cabal-install-3.2.0.0.tar.gz
 rm cabal-install-3.2.0.0.tar.gz
